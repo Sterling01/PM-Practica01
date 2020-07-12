@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Hoja de Vida
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header>
+      Empleos
+    </ion-list-header>
+
+    <ion-item *ngFor="let empleo of empleados | async; trackBy: trackByFN">
+      <ion-avatar slot="start">
+        <img src="../../assets/images/Pinscher.jpg" />
+      </ion-avatar>
+      <ion-label (click)='showEmpleo(empleo.uid)'>
+        <h2>{{empleo.titulo}}</h2>
+        <h3>{{empleo.descripcion}}</h3>
+        <p>{{empleo.salario}}</p>
+      </ion-label>
+    </ion-item>  
+
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Cosas</ion-list-header>
+
+    <ion-item *ngFor="let cosa of cosas">
+      <ion-label>
+        <h2>{{cosa.id}}</h2>
+        <h3>{{cosa.nombre}}</h3>
+      </ion-label>
+    </ion-item>  
+
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showCrearEmpleo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+
+</ion-content>
+
+   

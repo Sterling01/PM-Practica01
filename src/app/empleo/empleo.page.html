@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>empleo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen *ngIf="(empleo | async) as empleo">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Empleo</ion-card-subtitle>
+      <ion-card-title>{{empleo.titulo}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{empleo.descripcion}}
+    </ion-card-content>
+    
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información extra</ion-card-title>
+    </ion-card-header>
+    <div class="vertical-center">
+    <img [src]="empleo.image.url" width="200" height="298"/>
+    </div>
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-button expand="block" type="submit" class="ion-no-margin" (click)="showEditarEmpleo(empleo.uid)">Editar</ion-button>
+  </div>
+</ion-content>

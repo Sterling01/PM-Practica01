@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "26398141622",
+    "firebase_url": "https://empleos-cd2fb.firebaseio.com",
+    "project_id": "empleos-cd2fb",
+    "storage_bucket": "empleos-cd2fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26398141622:android:6e47cfd300ac6797e94a17",
+        "android_client_info": {
+          "package_name": "ec.edu.ups.pm.empleoscd2fb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26398141622-9ihla0vkid2t75cpc7u8l3j1sqnh28ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEpWHURhaRMwBKH9EhX-2NGiclZYsnvaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26398141622-9ihla0vkid2t75cpc7u8l3j1sqnh28ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
