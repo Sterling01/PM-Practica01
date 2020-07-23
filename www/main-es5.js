@@ -166,7 +166,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-app>\n  <ion-menu side=\"start\" contentId=\"main\">\n    <ion-header>\n      <ion-toolbar translucent>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <ion-item routerLink=\"/home\">\n          <ion-icon name=\"home-outline\" slot=\"start\"></ion-icon>\n          <ion-label>Inicio</ion-label>\n        </ion-item>\n        <ion-item routerLink=\"/lista-empleos\">\n          <ion-icon name=\"paper-plane\" slot=\"start\"></ion-icon>\n          <ion-label>Empleos</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"heart\" slot=\"start\"></ion-icon>\n          <ion-label>Favorites</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"archive\" slot=\"start\"></ion-icon>\n          <ion-label>Archived</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"trash\" slot=\"start\"></ion-icon>\n          <ion-label>Trash</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"warning\" slot=\"start\"></ion-icon>\n          <ion-label>Spam</ion-label>\n        </ion-item>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Curriculum\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content\n  [scrollEvents]=\"true\"\n  (ionScrollStart)=\"logScrollStart()\"\n  (ionScroll)=\"logScrolling($event)\"\n  (ionScrollEnd)=\"logScrollEnd()\">\n    \n</ion-content>\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\n</ion-app>\n";
+    __webpack_exports__["default"] = "<ion-app>\n  <!-- <ion-menu side=\"start\" contentId=\"main\" *ngIf=\"(user | async) as user\"> -->\n  <ion-menu side=\"start\" contentId=\"main\" *ngIf=\"(user | async) as user\">\n    <ion-header>\n      <ion-toolbar translucent>\n        <ion-title>Menu</ion-title>\n        <!--<ion-note>{{user.email}}</ion-note>-->\n      </ion-toolbar>\n      \n    </ion-header>\n    <ion-content>\n      <ion-list>\n        \n        <ion-item routerLink=\"/home\">\n          <ion-icon name=\"home-outline\" slot=\"start\"></ion-icon>\n          <ion-label>Inicio</ion-label>\n        </ion-item>\n        <ion-item routerLink=\"/lista-empleos\">\n          <ion-icon name=\"paper-plane\" slot=\"start\"></ion-icon>\n          <ion-label>Empleos</ion-label>\n        </ion-item>\n        <ion-item routerLink=\"/login\">\n          <ion-icon name=\"heart\" slot=\"start\"></ion-icon>\n          <ion-label>Login</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"archive\" slot=\"start\"></ion-icon>\n          <ion-label>Archived</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"trash\" slot=\"start\"></ion-icon>\n          <ion-label>Trash</ion-label>\n        </ion-item>\n        <ion-item (click)=\"logout()\">\n          <ion-icon name=\"warning\" slot=\"start\"></ion-icon>\n          <ion-label>Cerrar Sesión</ion-label>\n        </ion-item>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Curriculum\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content\n  [scrollEvents]=\"true\"\n  (ionScrollStart)=\"logScrollStart()\"\n  (ionScroll)=\"logScrolling($event)\"\n  (ionScrollEnd)=\"logScrollEnd()\">\n    \n</ion-content>\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\n</ion-app>\n";
     /***/
   },
 
@@ -802,19 +802,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     "./node_modules/@angular/router/fesm2015/router.js");
 
     var routes = [{
-      path: 'home',
+      path: 'lista-empleos',
       loadChildren: function loadChildren() {
-        return __webpack_require__.e(
-        /*! import() | home-home-module */
-        "home-home-module").then(__webpack_require__.bind(null,
-        /*! ./home/home.module */
-        "./src/app/home/home.module.ts")).then(function (m) {
-          return m.HomePageModule;
+        return Promise.all(
+        /*! import() | lista-empleos-lista-empleos-module */
+        [__webpack_require__.e("common"), __webpack_require__.e("lista-empleos-lista-empleos-module")]).then(__webpack_require__.bind(null,
+        /*! ./lista-empleos/lista-empleos.module */
+        "./src/app/lista-empleos/lista-empleos.module.ts")).then(function (m) {
+          return m.ListaEmpleosPageModule;
         });
       }
     }, {
       path: '',
-      redirectTo: 'home',
+      redirectTo: 'lista-empleos',
       pathMatch: 'full'
     }, {
       path: 'hello',
@@ -948,6 +948,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return m.ActualizarEmpleoPageModule;
         });
       }
+    }, {
+      path: 'login',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | login-login-module */
+        "login-login-module").then(__webpack_require__.bind(null,
+        /*! ./login/login.module */
+        "./src/app/login/login.module.ts")).then(function (m) {
+          return m.LoginPageModule;
+        });
+      }
+    }, {
+      path: 'register',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | register-register-module */
+        "register-register-module").then(__webpack_require__.bind(null,
+        /*! ./register/register.module */
+        "./src/app/register/register.module.ts")).then(function (m) {
+          return m.RegisterPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -1032,15 +1054,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/status-bar/ngx */
     "./node_modules/@ionic-native/status-bar/ngx/index.js");
+    /* harmony import */
+
+
+    var _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./shared/services/auth.service */
+    "./src/app/shared/services/auth.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
 
     var AppComponent = /*#__PURE__*/function () {
-      function AppComponent(platform, splashScreen, statusBar) {
+      function AppComponent(platform, splashScreen, statusBar, auth, router) {
         _classCallCheck(this, AppComponent);
 
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
-        this.initializeApp();
+        this.auth = auth;
+        this.router = router; //this.initializeApp();
       }
 
       _createClass(AppComponent, [{
@@ -1052,7 +1087,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.statusBar.styleDefault();
 
             _this.splashScreen.hide();
+
+            _this.auth.getCurrentUser().then(function (user) {
+              console.log(user);
+              _this.user = _this.auth.user; //Si esta autentificado se va a home
+
+              if (user) {
+                _this.router.navigate(['home']);
+              } else {
+                _this.router.navigate(['login']);
+              }
+            });
           });
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.auth.logout();
+
+                  case 2:
+                    this.router.navigate(['login']);
+
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         }
       }]);
 
@@ -1066,6 +1134,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"]
       }, {
         type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]
+      }, {
+        type: _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }];
     };
 
@@ -1077,7 +1149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
       "./src/app/app.component.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])], AppComponent);
     /***/
   },
 
@@ -1196,6 +1268,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @ionic-native/camera/ngx */
     "./node_modules/@ionic-native/camera/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @ionic-native/google-plus/ngx */
+    "./node_modules/@ionic-native/google-plus/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! @ionic-native/call-number/ngx */
+    "./node_modules/@ionic-native/call-number/ngx/index.js");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1205,12 +1289,476 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
       entryComponents: [],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_9__["AngularFireModule"].initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_13__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_10__["AngularFireAuthModule"], _angular_fire_database__WEBPACK_IMPORTED_MODULE_11__["AngularFireDatabaseModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_12__["AngularFireStorageModule"]],
-      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"], {
+      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"], _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_16__["GooglePlus"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__["CallNumber"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_14__["AngularFirestore"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })], AppModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/services/auth.service.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/shared/services/auth.service.ts ***!
+    \*************************************************/
+
+  /*! exports provided: AuthService */
+
+  /***/
+  function srcAppSharedServicesAuthServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AuthService", function () {
+      return AuthService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/fire/auth */
+    "./node_modules/@angular/fire/fesm2015/angular-fire-auth.js");
+    /* harmony import */
+
+
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/fire/firestore */
+    "./node_modules/@angular/fire/fesm2015/angular-fire-firestore.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/google-plus/ngx */
+    "./node_modules/@ionic-native/google-plus/ngx/index.js");
+    /* harmony import */
+
+
+    var firebase_app__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! firebase/app */
+    "./node_modules/firebase/app/dist/index.cjs.js");
+    /* harmony import */
+
+
+    var firebase_app__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_7__);
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+
+    var AuthService = /*#__PURE__*/function () {
+      function AuthService(afAuth, afs, platform, googlePlus) {
+        var _this2 = this;
+
+        _classCallCheck(this, AuthService);
+
+        this.afAuth = afAuth;
+        this.afs = afs;
+        this.platform = platform;
+        this.googlePlus = googlePlus;
+        this.user = this.afAuth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (user) {
+          if (user) {
+            return _this2.afs.doc("users/".concat(user.uid)).valueChanges();
+          } else {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
+          }
+        }));
+      }
+
+      _createClass(AuthService, [{
+        key: "getCurrentUser",
+        value: function getCurrentUser() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    return _context2.abrupt("return", this.user.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["first"])()).toPromise());
+
+                  case 1:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "signupUser",
+        value: function signupUser(name, email, password) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var user;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.prev = 0;
+                    _context3.next = 3;
+                    return this.afAuth.createUserWithEmailAndPassword(email, password);
+
+                  case 3:
+                    _context3.next = 5;
+                    return this.afAuth.currentUser;
+
+                  case 5:
+                    user = _context3.sent;
+                    _context3.next = 8;
+                    return user.updateProfile({
+                      displayName: name,
+                      photoURL: "https://goo.gl/7kz9qG"
+                    });
+
+                  case 8:
+                    return _context3.abrupt("return", _context3.sent);
+
+                  case 11:
+                    _context3.prev = 11;
+                    _context3.t0 = _context3["catch"](0);
+                    console.error("Error" + JSON.stringify(_context3.t0));
+                    return _context3.abrupt("return", _context3.t0);
+
+                  case 15:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this, [[0, 11]]);
+          }));
+        }
+      }, {
+        key: "resetPassword",
+        value: function resetPassword(email) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    _context4.prev = 0;
+                    return _context4.abrupt("return", this.afAuth.sendPasswordResetEmail(email));
+
+                  case 4:
+                    _context4.prev = 4;
+                    _context4.t0 = _context4["catch"](0);
+                    return _context4.abrupt("return", _context4.t0);
+
+                  case 7:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this, [[0, 4]]);
+          }));
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    return _context5.abrupt("return", this.afAuth.signOut());
+
+                  case 1:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5, this);
+          }));
+        }
+        /****************************************** LOGIN WITH GOOGLE ******************************************/
+
+      }, {
+        key: "googleLogin",
+        value: function googleLogin() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    if (!this.platform.is("cordova")) {
+                      _context6.next = 6;
+                      break;
+                    }
+
+                    _context6.next = 3;
+                    return this.nativeGoogleLogin();
+
+                  case 3:
+                    return _context6.abrupt("return", _context6.sent);
+
+                  case 6:
+                    _context6.next = 8;
+                    return this.webGoogleLogin();
+
+                  case 8:
+                    return _context6.abrupt("return", _context6.sent);
+
+                  case 9:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6, this);
+          }));
+        }
+      }, {
+        key: "nativeGoogleLogin",
+        value: function nativeGoogleLogin() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            var gplusUser, googleCredential, firebaseUser;
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.prev = 0;
+                    _context7.next = 3;
+                    return this.googlePlus.login({
+                      webClientId: src_environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].googleWebClientId,
+                      offline: true
+                    });
+
+                  case 3:
+                    gplusUser = _context7.sent;
+                    googleCredential = firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"].GoogleAuthProvider.credential(gplusUser.idToken);
+                    _context7.next = 7;
+                    return firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"]().signInWithCredential(googleCredential);
+
+                  case 7:
+                    firebaseUser = _context7.sent;
+                    _context7.next = 10;
+                    return this.updateUserData(firebaseUser, "google");
+
+                  case 10:
+                    return _context7.abrupt("return", _context7.sent);
+
+                  case 13:
+                    _context7.prev = 13;
+                    _context7.t0 = _context7["catch"](0);
+                    console.error("Error Login google - native" + JSON.stringify(_context7.t0));
+                    return _context7.abrupt("return", _context7.t0);
+
+                  case 17:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7, this, [[0, 13]]);
+          }));
+        }
+      }, {
+        key: "webGoogleLogin",
+        value: function webGoogleLogin() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            var provider, credential;
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    _context8.prev = 0;
+                    provider = new firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"].GoogleAuthProvider();
+                    _context8.next = 4;
+                    return this.afAuth.signInWithPopup(provider);
+
+                  case 4:
+                    credential = _context8.sent;
+                    _context8.next = 7;
+                    return this.updateUserData(credential.user, "google");
+
+                  case 7:
+                    return _context8.abrupt("return", _context8.sent);
+
+                  case 10:
+                    _context8.prev = 10;
+                    _context8.t0 = _context8["catch"](0);
+                    console.error("Error Login google - web" + JSON.stringify(_context8.t0));
+                    return _context8.abrupt("return", _context8.t0);
+
+                  case 14:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8, this, [[0, 10]]);
+          }));
+        }
+        /***************************************   EMAIL LOGIN *********************************/
+
+      }, {
+        key: "emailPasswordLogin",
+        value: function emailPasswordLogin(email, password) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+            var emailCredential, firebaseUser;
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    _context9.prev = 0;
+                    emailCredential = firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"].EmailAuthProvider.credential(email, password);
+                    _context9.next = 4;
+                    return firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"]().signInWithCredential(emailCredential);
+
+                  case 4:
+                    firebaseUser = _context9.sent;
+                    _context9.next = 7;
+                    return this.updateUserData(firebaseUser.user, "email");
+
+                  case 7:
+                    return _context9.abrupt("return", _context9.sent);
+
+                  case 10:
+                    _context9.prev = 10;
+                    _context9.t0 = _context9["catch"](0);
+                    return _context9.abrupt("return", _context9.t0);
+
+                  case 13:
+                  case "end":
+                    return _context9.stop();
+                }
+              }
+            }, _callee9, this, [[0, 10]]);
+          }));
+        } //-------------------------------------
+
+      }, {
+        key: "userExists",
+        value: function userExists(email) {
+          console.log("userExists", email);
+          return this.afs.collection("users", function (ref) {
+            return ref.where("email", "==", email);
+          }).valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["first"])()).toPromise();
+        } // Guardar datos del usuario en Firestore
+
+      }, {
+        key: "updateUserData",
+        value: function updateUserData(usertemp, provider) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            var doc, data, user, userRef;
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    console.log("update", JSON.stringify(usertemp));
+                    _context10.next = 3;
+                    return this.userExists(usertemp.email);
+
+                  case 3:
+                    doc = _context10.sent;
+                    user = JSON.parse(JSON.stringify(usertemp));
+                    console.log("doc", JSON.stringify(doc));
+
+                    if (!(doc == null || doc == "")) {
+                      _context10.next = 10;
+                      break;
+                    }
+
+                    //Crear cuenta
+                    data = {
+                      uid: user.uid,
+                      email: user.email || null,
+                      displayName: user.displayName || '',
+                      photoURL: user.photoURL || "https://goo.gl/7kz9qG",
+                      provider: provider,
+                      lastLogin: new Date(Number(user.lastLoginAt)) || new Date(),
+                      createdAt: new Date(Number(user.createdAt)) || new Date()
+                    };
+                    _context10.next = 15;
+                    break;
+
+                  case 10:
+                    if (!(doc.active == false)) {
+                      _context10.next = 14;
+                      break;
+                    }
+
+                    throw {
+                      error_code: 999,
+                      error_message: "Acceso denegado, servicio deshabilitado, consulte con el administrador."
+                    };
+
+                  case 14:
+                    //Actualizar cuenta
+                    data = {
+                      uid: user.uid,
+                      email: user.email || null,
+                      displayName: user.displayName || '',
+                      photoURL: user.photoURL || "https://goo.gl/7kz9qG",
+                      provider: provider,
+                      lastLogin: new Date(Number(user.lastLoginAt)) || new Date()
+                    };
+
+                  case 15:
+                    console.log("data", JSON.stringify(data));
+                    userRef = this.afs.collection('users');
+                    return _context10.abrupt("return", userRef.doc("".concat(user.uid)).set(data, {
+                      merge: true
+                    }));
+
+                  case 18:
+                  case "end":
+                    return _context10.stop();
+                }
+              }
+            }, _callee10, this);
+          }));
+        }
+      }]);
+
+      return AuthService;
+    }();
+
+    AuthService.ctorParameters = function () {
+      return [{
+        type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"]
+      }, {
+        type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Platform"]
+      }, {
+        type: _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"]
+      }];
+    };
+
+    AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Platform"], _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"]])], AuthService);
     /***/
   },
 
@@ -1250,7 +1798,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         storageBucket: "empleos-cd2fb.appspot.com",
         messagingSenderId: "26398141622",
         appId: "1:26398141622:web:4957f05c3b120747e94a17"
-      }
+      },
+      googleWebClientId: '26398141622-9ihla0vkid2t75cpc7u8l3j1sqnh28ab.apps.googleusercontent.com'
     };
     /***/
   },

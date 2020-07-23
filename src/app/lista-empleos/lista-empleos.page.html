@@ -6,11 +6,11 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- <ion-content fullscreen *ngIf="usuario"> -->
 <ion-content fullscreen>
+  <h5>Inicio sesion:</h5>
   <ion-list>
-    <ion-list-header>
-      Empleos
-    </ion-list-header>
+    <ion-list-header>Empleos</ion-list-header>
 
     <ion-item *ngFor="let empleo of empleados | async; trackBy: trackByFN">
       <ion-avatar slot="start">
@@ -19,7 +19,30 @@
       <ion-label (click)='showEmpleo(empleo.uid)'>
         <h2>{{empleo.titulo}}</h2>
         <h3>{{empleo.descripcion}}</h3>
-        <p>{{empleo.salario}}</p>
+        <p [class]="empleo.salario>450?'salario-alto':''">{{empleo.salario}}</p>
+        <h5>{{empleo.telefono}}</h5>
+      </ion-label>
+      <app-calls [numero]="empleo.telefono"> </app-calls>
+      <!--<app-image-upload [icon]="'camera'" [type]="'camera'" (uploadFinished)="imagenCargada($event)"></app-image-upload> -->
+      <!--<ion-button expand="block" type="submit" class="ion-no-margin" (click)='llamar(empleo.telefono)'>Llamar</ion-button>-->
+    </ion-item>  
+
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Empleos
+    </ion-list-header>
+
+    <ion-item *ngFor="let empleo of empleados2">
+      <ion-avatar slot="start">
+        <img src="../../assets/images/Pinscher.jpg" />
+      </ion-avatar>
+      <ion-label (click)='showEmpleo(empleo.uid)'>
+        <h2>{{empleo.titulo}}</h2>
+        <h3>{{empleo.descripcion}}</h3>
+        <p [class]="empleo.class">{{empleo.salario}}</p>
+        <p>{{empleo.iess}}</p>
       </ion-label>
     </ion-item>  
 
@@ -43,8 +66,6 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
-
 </ion-content>
 
    

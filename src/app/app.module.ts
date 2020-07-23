@@ -17,6 +17,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +36,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
     StatusBar,
     SplashScreen,
     Camera,
+    GooglePlus,
+    CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFirestore
   ],

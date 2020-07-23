@@ -9,5 +9,6 @@ export const environment = {
     storageBucket: "empleos-cd2fb.appspot.com",
     messagingSenderId: "26398141622",
     appId: "1:26398141622:web:4957f05c3b120747e94a17"
-  }
+  },
+  googleWebClientId : '26398141622-9ihla0vkid2t75cpc7u8l3j1sqnh28ab.apps.googleusercontent.com'
 };

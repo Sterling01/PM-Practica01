@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmpleosService } from '../shared/services/empleos.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-lista-empleos',
@@ -16,21 +18,40 @@ export class ListaEmpleosPage implements OnInit{
 
   cosas:any = new Array()
 
-  constructor(private empleosService:EmpleosService, private router: Router) { }
+  usuario : any
+
+  constructor(private empleosService:EmpleosService, private router: Router, private auth: AuthService, private callNumber: CallNumber) { }
 
   ngOnInit() {
     this.empleados=this.empleosService.getEmpleos()
 
     this.cosas.push({id:10, nombre:"Stalin F"})
+    
+    //Obtener datos usuario
+    //this.auth.user.subscribe(data =>{
+      //this.usuario=data;
+    //});
 
     this.empleados.subscribe(data => {
       
       for(let aux of data){
         aux.iess = aux.salario * 0.095;
+        if(aux.salario>200)
+          aux.class = "salario-alto"
+        else
+          aux.class = ''
       }
       this.empleados2 = data;
+      
     });
 
+    
+
+  }
+
+  llamar(numero:string){
+    //console.log(numero)
+    this.callNumber.callNumber(numero, true)
   }
 
   showEmpleo(id:any){

@@ -438,7 +438,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-menu side=\"start\" contentId=\"main\">\n    <ion-header>\n      <ion-toolbar translucent>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <ion-item routerLink=\"/home\">\n          <ion-icon name=\"home-outline\" slot=\"start\"></ion-icon>\n          <ion-label>Inicio</ion-label>\n        </ion-item>\n        <ion-item routerLink=\"/lista-empleos\">\n          <ion-icon name=\"paper-plane\" slot=\"start\"></ion-icon>\n          <ion-label>Empleos</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"heart\" slot=\"start\"></ion-icon>\n          <ion-label>Favorites</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"archive\" slot=\"start\"></ion-icon>\n          <ion-label>Archived</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"trash\" slot=\"start\"></ion-icon>\n          <ion-label>Trash</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"warning\" slot=\"start\"></ion-icon>\n          <ion-label>Spam</ion-label>\n        </ion-item>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Curriculum\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content\n  [scrollEvents]=\"true\"\n  (ionScrollStart)=\"logScrollStart()\"\n  (ionScroll)=\"logScrolling($event)\"\n  (ionScrollEnd)=\"logScrollEnd()\">\n    \n</ion-content>\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <!-- <ion-menu side=\"start\" contentId=\"main\" *ngIf=\"(user | async) as user\"> -->\n  <ion-menu side=\"start\" contentId=\"main\" *ngIf=\"(user | async) as user\">\n    <ion-header>\n      <ion-toolbar translucent>\n        <ion-title>Menu</ion-title>\n        <!--<ion-note>{{user.email}}</ion-note>-->\n      </ion-toolbar>\n      \n    </ion-header>\n    <ion-content>\n      <ion-list>\n        \n        <ion-item routerLink=\"/home\">\n          <ion-icon name=\"home-outline\" slot=\"start\"></ion-icon>\n          <ion-label>Inicio</ion-label>\n        </ion-item>\n        <ion-item routerLink=\"/lista-empleos\">\n          <ion-icon name=\"paper-plane\" slot=\"start\"></ion-icon>\n          <ion-label>Empleos</ion-label>\n        </ion-item>\n        <ion-item routerLink=\"/login\">\n          <ion-icon name=\"heart\" slot=\"start\"></ion-icon>\n          <ion-label>Login</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"archive\" slot=\"start\"></ion-icon>\n          <ion-label>Archived</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-icon name=\"trash\" slot=\"start\"></ion-icon>\n          <ion-label>Trash</ion-label>\n        </ion-item>\n        <ion-item (click)=\"logout()\">\n          <ion-icon name=\"warning\" slot=\"start\"></ion-icon>\n          <ion-label>Cerrar Sesión</ion-label>\n        </ion-item>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Curriculum\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content\n  [scrollEvents]=\"true\"\n  (ionScrollStart)=\"logScrollStart()\"\n  (ionScroll)=\"logScrolling($event)\"\n  (ionScrollEnd)=\"logScrollEnd()\">\n    \n</ion-content>\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\n</ion-app>\n");
 
 /***/ }),
 
@@ -708,12 +708,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'home',
-        loadChildren: () => __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
+        path: 'lista-empleos',
+        loadChildren: () => Promise.all(/*! import() | lista-empleos-lista-empleos-module */[__webpack_require__.e("common"), __webpack_require__.e("lista-empleos-lista-empleos-module")]).then(__webpack_require__.bind(null, /*! ./lista-empleos/lista-empleos.module */ "./src/app/lista-empleos/lista-empleos.module.ts")).then(m => m.ListaEmpleosPageModule)
     },
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'lista-empleos',
         pathMatch: 'full'
     },
     {
@@ -764,6 +764,14 @@ const routes = [
         path: 'actualizar-empleo/:id',
         loadChildren: () => Promise.all(/*! import() | actualizar-empleo-actualizar-empleo-module */[__webpack_require__.e("common"), __webpack_require__.e("actualizar-empleo-actualizar-empleo-module")]).then(__webpack_require__.bind(null, /*! ./actualizar-empleo/actualizar-empleo.module */ "./src/app/actualizar-empleo/actualizar-empleo.module.ts")).then(m => m.ActualizarEmpleoPageModule)
     },
+    {
+        path: 'login',
+        loadChildren: () => __webpack_require__.e(/*! import() | login-login-module */ "login-login-module").then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(m => m.LoginPageModule)
+    },
+    {
+        path: 'register',
+        loadChildren: () => __webpack_require__.e(/*! import() | register-register-module */ "register-register-module").then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(m => m.RegisterPageModule)
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -808,29 +816,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/services/auth.service */ "./src/app/shared/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
 
 
 
 
 
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar) {
+    constructor(platform, splashScreen, statusBar, auth, router) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
-        this.initializeApp();
+        this.auth = auth;
+        this.router = router;
+        //this.initializeApp();
     }
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+            this.auth.getCurrentUser().then(user => {
+                console.log(user);
+                this.user = this.auth.user;
+                //Si esta autentificado se va a home
+                if (user) {
+                    this.router.navigate(['home']);
+                }
+                else {
+                    this.router.navigate(['login']);
+                }
+            });
+        });
+    }
+    logout() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            yield this.auth.logout();
+            this.router.navigate(['login']);
         });
     }
 };
 AppComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
-    { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] }
+    { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
+    { type: _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -840,7 +873,9 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
         _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
-        _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])
+        _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
+        _shared_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
 ], AppComponent);
 
 
@@ -873,6 +908,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/fesm2015/angular-fire-firestore.js");
 /* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+/* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
+
+
 
 
 
@@ -908,12 +947,219 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"],
+            _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_16__["GooglePlus"],
+            _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_17__["CallNumber"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
             _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_14__["AngularFirestore"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/services/auth.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/shared/services/auth.service.ts ***!
+  \*************************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/fesm2015/angular-fire-auth.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/fesm2015/angular-fire-firestore.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+
+
+
+
+let AuthService = class AuthService {
+    constructor(afAuth, afs, platform, googlePlus) {
+        this.afAuth = afAuth;
+        this.afs = afs;
+        this.platform = platform;
+        this.googlePlus = googlePlus;
+        this.user = this.afAuth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(user => {
+            if (user) {
+                return this.afs.doc(`users/${user.uid}`).valueChanges();
+            }
+            else {
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
+            }
+        }));
+    }
+    getCurrentUser() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return this.user.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["first"])()).toPromise();
+        });
+    }
+    signupUser(name, email, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            try {
+                yield this.afAuth.createUserWithEmailAndPassword(email, password);
+                const user = yield this.afAuth.currentUser;
+                return yield user.updateProfile({
+                    displayName: name,
+                    photoURL: "https://goo.gl/7kz9qG"
+                });
+            }
+            catch (err) {
+                console.error("Error" + JSON.stringify(err));
+                return err;
+            }
+        });
+    }
+    resetPassword(email) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            try {
+                return this.afAuth.sendPasswordResetEmail(email);
+            }
+            catch (err) {
+                return err;
+            }
+        });
+    }
+    logout() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return this.afAuth.signOut();
+        });
+    }
+    /****************************************** LOGIN WITH GOOGLE ******************************************/
+    googleLogin() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (this.platform.is("cordova")) {
+                return yield this.nativeGoogleLogin();
+            }
+            else {
+                return yield this.webGoogleLogin();
+            }
+        });
+    }
+    nativeGoogleLogin() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            try {
+                const gplusUser = yield this.googlePlus.login({
+                    webClientId: src_environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].googleWebClientId,
+                    offline: true
+                });
+                const googleCredential = firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"].GoogleAuthProvider.credential(gplusUser.idToken);
+                const firebaseUser = yield firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"]().signInWithCredential(googleCredential);
+                return yield this.updateUserData(firebaseUser, "google");
+            }
+            catch (err) {
+                console.error("Error Login google - native" + JSON.stringify(err));
+                return err;
+            }
+        });
+    }
+    webGoogleLogin() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            try {
+                const provider = new firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"].GoogleAuthProvider();
+                const credential = yield this.afAuth.signInWithPopup(provider);
+                return yield this.updateUserData(credential.user, "google");
+            }
+            catch (err) {
+                console.error("Error Login google - web" + JSON.stringify(err));
+                return err;
+            }
+        });
+    }
+    /***************************************   EMAIL LOGIN *********************************/
+    emailPasswordLogin(email, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            try {
+                const emailCredential = firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"].EmailAuthProvider.credential(email, password);
+                const firebaseUser = yield firebase_app__WEBPACK_IMPORTED_MODULE_7__["auth"]().signInWithCredential(emailCredential);
+                return yield this.updateUserData(firebaseUser.user, "email");
+            }
+            catch (err) {
+                return err;
+            }
+        });
+    }
+    //-------------------------------------
+    userExists(email) {
+        console.log("userExists", email);
+        return this.afs
+            .collection("users", ref => ref.where("email", "==", email))
+            .valueChanges()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["first"])())
+            .toPromise();
+    }
+    // Guardar datos del usuario en Firestore
+    updateUserData(usertemp, provider) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log("update", JSON.stringify(usertemp));
+            const doc = yield this.userExists(usertemp.email);
+            let data;
+            let user = JSON.parse(JSON.stringify(usertemp));
+            console.log("doc", JSON.stringify(doc));
+            if (doc == null || doc == "") {
+                //Crear cuenta
+                data = {
+                    uid: user.uid,
+                    email: user.email || null,
+                    displayName: user.displayName || '',
+                    photoURL: user.photoURL || "https://goo.gl/7kz9qG",
+                    provider: provider,
+                    lastLogin: new Date(Number(user.lastLoginAt)) || new Date(),
+                    createdAt: new Date(Number(user.createdAt)) || new Date()
+                };
+            }
+            else if (doc.active == false) {
+                throw { error_code: 999, error_message: "Acceso denegado, servicio deshabilitado, consulte con el administrador." };
+            }
+            else {
+                //Actualizar cuenta
+                data = {
+                    uid: user.uid,
+                    email: user.email || null,
+                    displayName: user.displayName || '',
+                    photoURL: user.photoURL || "https://goo.gl/7kz9qG",
+                    provider: provider,
+                    lastLogin: new Date(Number(user.lastLoginAt)) || new Date()
+                };
+            }
+            console.log("data", JSON.stringify(data));
+            const userRef = this.afs.collection('users');
+            return userRef.doc(`${user.uid}`).set(data, { merge: true });
+        });
+    }
+};
+AuthService.ctorParameters = () => [
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"] },
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Platform"] },
+    { type: _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"] }
+];
+AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"],
+        _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestore"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Platform"],
+        _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"]])
+], AuthService);
 
 
 
@@ -941,7 +1187,8 @@ const environment = {
         storageBucket: "empleos-cd2fb.appspot.com",
         messagingSenderId: "26398141622",
         appId: "1:26398141622:web:4957f05c3b120747e94a17"
-    }
+    },
+    googleWebClientId: '26398141622-9ihla0vkid2t75cpc7u8l3j1sqnh28ab.apps.googleusercontent.com'
 };
 
 
