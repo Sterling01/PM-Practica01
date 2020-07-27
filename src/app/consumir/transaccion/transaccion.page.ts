@@ -26,7 +26,7 @@ export class TransaccionPage implements OnInit {
 
       else if(data.code = '2')
         this.toast('No existe la cuenta destino');
-        if(data.code = '3')
+      else if(data.code = '3')
         this.toast('No cuenta con el dinero suficiente');
     })
     this.transaccion=new Transaccion();

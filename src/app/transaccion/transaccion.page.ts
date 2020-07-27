@@ -11,13 +11,15 @@ import { Observable } from 'rxjs';
 export class TransaccionPage implements OnInit {
 
   transacciones: Observable<Transaccion[]>
-
+  
+  transacciones1: Observable<Transaccion[]>
+  
   constructor(private transaccionesService : TransaccionesService) { }
 
   ngOnInit() {
+
     this.transacciones = this.transaccionesService.getTransferencias()
 
     console.log(this.transacciones)
-  }
-
+}
 }

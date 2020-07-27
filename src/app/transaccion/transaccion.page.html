@@ -8,13 +8,15 @@
 
   <ion-list id="lista1">
 
+    
     <ion-item *ngFor="let transaccion of transacciones | async">
       <ion-label >
-        <h2>{{transaccion.codigo_transaccion}}</h2>
-        <h3>{{transaccion.monto_transaccion}}</h3>
+        <h2>Código: {{transaccion.codigo_tipo_transaccion}}</h2>
+        <h3>Nombre: {{transaccion.nombre_tipo_transaccion}}</h3>
+        <h3>Descripción: {{transaccion.descripcion_tipo_transaccion}}</h3>
       </ion-label>
     </ion-item>
-    
+
   </ion-list>
 
 </ion-content>
