@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>transaccion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <ion-item>
+      <ion-label position="stacked">Cuenta Origen <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required type="text" [(ngModel)]="transaccion.origen"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Cuenta Destino</ion-label>
+      <ion-textarea [(ngModel)]="transaccion.destino"></ion-textarea>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="stacked" >Monto</ion-label>
+      <ion-input [(ngModel)]="transaccion.monto"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" type="submit" (click)="guardar()">Guardar</ion-button>
+  </div>
+</ion-content>

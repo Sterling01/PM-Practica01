@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-button size=\"small\" (click)=\"captureAndUpload()\">\n  <ion-icon [name]=\"icon\"></ion-icon> \n</ion-button>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-button size=\"small\" (click)=\"captureAndUpload()\">\r\n  <ion-icon [name]=\"icon\"></ion-icon> \r\n</ion-button>");
 
 /***/ }),
 
@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-button (click)=\"calcular()\">\n  <ion-icon [name]=\"icon\"></ion-icon>\n  Tomar Foto\n</ion-button>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-button (click)=\"calcular()\">\r\n  <ion-icon [name]=\"icon\"></ion-icon>\r\n  Tomar Foto\r\n</ion-button>\r\n");
 
 /***/ }),
 
@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>crear-empleo</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-list lines=\"full\" class=\"ion-no-margin ion-no-padding\">\n    <ion-item>\n      <ion-label position=\"stacked\">Titulo <ion-text color=\"danger\">*</ion-text></ion-label>\n      <ion-input required type=\"text\" [(ngModel)]=\"empleo.titulo\"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label position=\"stacked\">Descripcion<ion-text color=\"danger\">*</ion-text></ion-label>\n      <ion-textarea [(ngModel)]=\"empleo.descripcion\"></ion-textarea>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label position=\"stacked\">Salario<ion-text color=\"danger\">*</ion-text></ion-label>\n      <ion-input required type=\"text\" [(ngModel)]=\"empleo.salario\"></ion-input>\n    </ion-item>\n\n    <ion-item>\n\n      <test-component icon=\"camera\" (finish)=\"saludar($event)\"></test-component>\n\n      <app-image-upload [icon]=\"'camera'\" [type]=\"'camera'\" (uploadFinished)=\"imagenCargada($event)\"></app-image-upload>\n\n      <ion-button type=\"button\" (click)=\"tomarFoto()\">Tomar Foto</ion-button>\n      <img [src]=\"base64Image\">\n    </ion-item>\n    \n  </ion-list>\n\n  <div class=\"ion-padding\">\n    <ion-button expand=\"block\" type=\"submit\" class=\"ion-no-margin\" (click)=\"guardarEmpleo()\">Crear Empleo</ion-button>\n  </div>\n  \n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>crear-empleo</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-list lines=\"full\" class=\"ion-no-margin ion-no-padding\">\r\n    <ion-item>\r\n      <ion-label position=\"stacked\">Titulo <ion-text color=\"danger\">*</ion-text></ion-label>\r\n      <ion-input required type=\"text\" [(ngModel)]=\"empleo.titulo\"></ion-input>\r\n    </ion-item>\r\n\r\n    <ion-item>\r\n      <ion-label position=\"stacked\">Descripcion<ion-text color=\"danger\">*</ion-text></ion-label>\r\n      <ion-textarea [(ngModel)]=\"empleo.descripcion\"></ion-textarea>\r\n    </ion-item>\r\n    \r\n    <ion-item>\r\n      <ion-label position=\"stacked\">Salario<ion-text color=\"danger\">*</ion-text></ion-label>\r\n      <ion-input required type=\"text\" [(ngModel)]=\"empleo.salario\"></ion-input>\r\n    </ion-item>\r\n\r\n    <ion-item>\r\n\r\n      <test-component icon=\"camera\" (finish)=\"saludar($event)\"></test-component>\r\n\r\n      <app-image-upload [icon]=\"'camera'\" [type]=\"'camera'\" (uploadFinished)=\"imagenCargada($event)\"></app-image-upload>\r\n\r\n      <ion-button type=\"button\" (click)=\"tomarFoto()\">Tomar Foto</ion-button>\r\n      <img [src]=\"base64Image\">\r\n    </ion-item>\r\n    \r\n  </ion-list>\r\n\r\n  <div class=\"ion-padding\">\r\n    <ion-button expand=\"block\" type=\"submit\" class=\"ion-no-margin\" (click)=\"guardarEmpleo()\">Crear Empleo</ion-button>\r\n  </div>\r\n  \r\n</ion-content>\r\n");
 
 /***/ }),
 
