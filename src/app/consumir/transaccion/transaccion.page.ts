@@ -20,13 +20,12 @@ export class TransaccionPage implements OnInit {
   guardar(){
     console.log(this.transaccion)
     this.transaccionService.sendTransaccion(this.transaccion).subscribe(data =>{
-      console.log(data);
-      if(data.code = '1')
+      console.log(data.code);
+      if(data.code == 1)
         this.toast('Realizado Correctamente');
-
-      else if(data.code = '2')
+      else if(data.code ==  2)
         this.toast('No existe la cuenta destino');
-      else if(data.code = '3')
+      else if(data.code ==  3)
         this.toast('No cuenta con el dinero suficiente');
     })
     this.transaccion=new Transaccion();
