@@ -69,7 +69,11 @@ const routes: Routes = [
   },  {
     path: 'transaccion',
     loadChildren: () => import('./consumir/transaccion/transaccion.module').then( m => m.TransaccionPageModule)
+  },  {
+    path: 'cuenta',
+    loadChildren: () => import('./consumir/cuenta/cuenta.module').then( m => m.CuentaPageModule)
   },
+
 
 ];
 

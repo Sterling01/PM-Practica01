@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list id="lista1">
+
+    <ion-item *ngFor="let user of usuario | async">
+      <ion-label >
+        <h3>{{user.cedula_usuario}}</h3>
+        <h2>{{user.nombre_usuario}}</h2>
+       
+      </ion-label>
+    </ion-item>
+    
+  </ion-list>
+
+
+
+
+</ion-content>
