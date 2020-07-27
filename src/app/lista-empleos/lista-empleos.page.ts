@@ -49,11 +49,6 @@ export class ListaEmpleosPage implements OnInit{
 
   }
 
-  llamar(numero:string){
-    //console.log(numero)
-    this.callNumber.callNumber(numero, true)
-  }
-
   showEmpleo(id:any){
     this.router.navigate([`empleo/${id}`])
   }
