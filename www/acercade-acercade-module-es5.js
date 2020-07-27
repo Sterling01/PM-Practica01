@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>acercade</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<h3>App Hoja de Vida</h3>\n  <ion-label position=\"fixed\">Aplicación que permite el ingreso de datos de el curriculum de una persona\n    distinguiendo la información a tomar en cuenta si tiene o no experiencia laboral.</ion-label>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>acercade</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n<h3>App Hoja de Vida</h3>\r\n  <ion-label position=\"fixed\">Aplicación que permite el ingreso de datos de el curriculum de una persona\r\n    distinguiendo la información a tomar en cuenta si tiene o no experiencia laboral.</ion-label>\r\n</ion-content>\r\n";
     /***/
   },
 

@@ -20,6 +20,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,6 +33,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    HttpClientModule,
   ],
   providers: [
     StatusBar,
